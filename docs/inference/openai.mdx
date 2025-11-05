@@ -1,0 +1,81 @@
+---
+title: "OpenAI API Migration Guide"
+description: "Copy for LLMView as Markdown"
+---
+
+We've worked to make migration from OpenAI to Telnyx as painless as possible.
+
+You will only need to:
+
+1. Set the `OPENAI_BASE_URL` and `OPENAI_API_KEY` environment variables
+2. Use an open-source `model` supported by Telnyx
+
+Set the environment variables...
+
+* `export OPENAI_BASE_URL='https://api.telnyx.com/v2/ai'`
+* `export OPENAI_API_KEY='KEY***'`
+
+and this code will work!
+
+## [OpenAI example ​](#openai-example "Direct link to OpenAI example")
+
+```
+from openai import OpenAIclient = OpenAI()chat_completion = client.chat.completions.create(    # model="gpt-3.5-turbo",    model="meta-llama/Meta-Llama-3.1-8B-Instruct",    messages=[        {"role": "user", "content": "Tell me about Telnyx"}    ],    temperature=0.0,    stream=True,)
+```
+
+If you'd like to use different environment variables, you may also pass these fields in the client constructor
+
+```
+from openai import OpenAIclient = OpenAI(    api_key=os.getenv("TELNYX_API_KEY"),    base_url=os.getenv("TELNYX_BASE_URL"))chat_completion = client.chat.completions.create(    # model="gpt-3.5-turbo",    model="meta-llama/Meta-Llama-3.1-8B-Instruct",    messages=[        {"role": "user", "content": "Tell me about Telnyx"}    ],    temperature=0.0,    stream=True,)
+```
+
+Telnyx supports the vast majority of parameters for Chat and Audio (and a few helpful ones that OpenAI does not).
+
+See the full compatibility matrix below.
+
+# [Chat Completions](/api/inference/inference-embedding/chat-public-chat-completions-post)
+
+| Parameter           | Description                                                                      | Telnyx | OpenAI |
+| ------------------- | -------------------------------------------------------------------------------- | ------ | ------ |
+| `messages`          | Provides chat context                                                            | ✅      | ✅      |
+| `model`             | Adjusts speed + quality                                                          | ✅      | ✅      |
+| `stream`            | Streams response                                                                 | ✅      | ✅      |
+| `max_tokens`        | Limits output length                                                             | ✅      | ✅      |
+| `temperature`       | Adjusts predictability                                                           | ✅      | ✅      |
+| `top_p`             | Adjusts variety                                                                  | ✅      | ✅      |
+| `frequency_penalty` | Decreases repetition                                                             | ✅      | ✅      |
+| `presence_penalty`  | Decreases repetition...                                                          | ✅      | ✅      |
+| `n`                 | Returns `n` responses                                                            | ✅      | ✅      |
+| `stop`              | Forces model to stop                                                             | ✅      | ✅      |
+| `logit_bias`        | Tweaks odds of results                                                           | ✅      | ✅      |
+| `logprobs`          | Returns odds of outputs                                                          | ✅      | ✅      |
+| `top_logprobs`      | -> For how many candidates?                                                      | ✅      | ✅      |
+| `seed`              | Reduces randomness                                                               | ✅      | ✅      |
+| `response_format`   | Ensures syntax (e.g. JSON)                                                       | ✅      | ✅      |
+| `tool_choice`       | How does model choose?                                                           | ✅      | ✅      |
+| `tools`             | Helps model respond                                                              | ✅      | ✅      |
+| `function`          | -> Outputs JSON for your code                                                    | ✅      | ✅      |
+| `retrieval`         | -> Uses your docs (e.g. PDFs)                                                    | ✅      | ❌      |
+| `guided_json`       | Ensures output conforms to schema                                                | ✅      | ❌      |
+| `guided_regex`      | Ensures output conforms to regex                                                 | ✅      | ❌      |
+| `guided_choice`     | Ensures output conforms to choice                                                | ✅      | ❌      |
+| `min_p`             | [`top_p` alternative](https://huggingface.co/blog/how-to-generate#beam-search)   | ✅      | ❌      |
+| `use_beam_search`   | [Explores more options](https://huggingface.co/blog/how-to-generate#beam-search) | ✅      | ❌      |
+| `best_of`           | -> How many options?                                                             | ✅      | ❌      |
+| `length_penalty`    | -> Are long options bad?                                                         | ✅      | ❌      |
+| `early_stopping`    | -> How hard should it try?                                                       | ✅      | ❌      |
+| `user`              | Tracks users                                                                     | ❌      | ✅      |
+
+# [Transcriptions (BETA)](/api/inference/inference-embedding/audio-public-audio-transcriptions-post)
+
+| Parameter                   | What does this do?      | Telnyx | OpenAI |
+| --------------------------- | ----------------------- | ------ | ------ |
+| `file`                      | Provides audio data     | ✅      | ✅      |
+| `model`                     | Adjusts speed + quality | ✅      | ✅      |
+| `response_format`           | Adjusts output format   | ✅      | ✅      |
+| `timestamp_granularities[]` | Adds timestamps         | ✅      | ✅      |
+| -> `segment`                | -> per audio segment    | ✅      | ✅      |
+| -> `word`                   | -> per word             | ❌      | ✅      |
+| `language`                  | Improves accuracy       | ❌      | ✅      |
+| `prompt`                    | Guides style            | ❌      | ✅      |
+| `temperature`               | Adjusts "creativity"    | ❌      | ✅      |

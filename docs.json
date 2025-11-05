@@ -1,122 +1,111 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "aspen",
+  "name": "Telnyx",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#0D9373",
+    "light": "#55D799",
+    "dark": "#0D9373"
   },
   "favicon": "/favicon.svg",
   "navigation": {
     "tabs": [
       {
-        "tab": "Guides",
+        "tab": "Documentation",
         "groups": [
           {
-            "group": "Getting started",
+            "group": "Account setup",
             "pages": [
-              "index",
-              "quickstart",
-              "development"
+              "docs/account-setup",
+              "docs/account-setup/getting-started",
+              "docs/account-setup/account-types",
+              "docs/account-setup/account-management"
             ]
           },
           {
-            "group": "Customization",
+            "group": "AI",
             "pages": [
-              "essentials/settings",
-              "essentials/navigation"
+              "docs/inference",
+              "docs/inference/quickstarts",
+              "docs/inference/core-features",
+              "docs/inference/tutorials",
+              "docs/inference/integrations",
+              "docs/inference/advanced-use-cases",
+              "docs/inference/openai",
+              "api/inference/inference-embedding/chat-public-chat-completions-post"
             ]
           },
           {
-            "group": "Writing content",
+            "group": "Real-time communications",
             "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/reusable-snippets"
+              "docs/real-time-communications",
+              "docs/real-time-communications/getting-started",
+              "docs/messaging",
+              "docs/voice",
+              "docs/voice/sip-trunking",
+              "docs/voice/stir-shaken",
+              "docs/voice/webrtc-overview",
+              "docs/numbers",
+              "docs/video",
+              "docs/identity",
+              "docs/programmable-fax"
             ]
           },
           {
-            "group": "AI tools",
+            "group": "IoT and networking",
             "pages": [
-              "ai-tools/cursor",
-              "ai-tools/claude-code",
-              "ai-tools/windsurf"
+              "docs/iot-networking",
+              "docs/iot-sim",
+              "docs/private-networks"
+            ]
+          },
+          {
+            "group": "Cloud storage",
+            "pages": [
+              "docs/cloud-storage",
+              "docs/cloud-storage/getting-started",
+              "docs/cloud-storage/compatibility",
+              "docs/cloud-storage/sdk-examples",
+              "docs/cloud-storage/advanced-features",
+              "docs/cloud-storage/management-operations"
+            ]
+          },
+          {
+            "group": "Reporting",
+            "pages": [
+              "docs/reporting",
+              "docs/reporting/usage-reports-overview",
+              "docs/reporting/debugging"
+            ]
+          },
+          {
+            "group": "Glossary",
+            "pages": [
+              "docs/glossary",
+              "docs/glossary/ai-glossary",
+              "docs/glossary/telecom-glossary"
+            ]
+          },
+          {
+            "group": "Release Notes",
+            "pages": [
+              "docs/release-notes"
             ]
           }
         ]
       },
       {
-        "tab": "API reference",
+        "tab": "Guides",
         "groups": [
           {
-            "group": "API documentation",
+            "group": "Overview",
             "pages": [
-              "api-reference/introduction"
-            ]
-          },
-          {
-            "group": "Endpoint examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
+              "docs/overview"
             ]
           }
         ]
       }
-    ],
-    "global": {
-      "anchors": [
-        {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
-        },
-        {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
-        }
-      ]
-    }
+    ]
   },
-  "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
-  },
-  "navbar": {
-    "links": [
-      {
-        "label": "Support",
-        "href": "mailto:hi@mintlify.com"
-      }
-    ],
-    "primary": {
-      "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
-    }
-  },
-  "contextual": {
-    "options": [
-     "copy",
-     "view",
-     "chatgpt",
-     "claude",
-     "perplexity",
-     "mcp",
-     "cursor",
-     "vscode"
-   ]
-  },
-  "footer": {
-    "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
-    }
-  }
+  "logo": "/images/img/logo.svg"
 }
