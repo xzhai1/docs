@@ -8,6 +8,11 @@
     "dark": "#0D9373"
   },
   "favicon": "/favicon.svg",
+  "api": {
+    "openapi": {
+      "source": "https://app.stainless.com/api/spec/documented/telnyx/openapi.documented.yml"
+    }
+  },
   "navigation": {
     "tabs": [
       {
@@ -104,6 +109,12 @@
             ]
           }
         ]
+      },
+      {
+        "tab": "Tab 2"
+      },
+      {
+        "tab": "Tab 3"
       }
     ]
   },
