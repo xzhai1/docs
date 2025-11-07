@@ -111,6 +111,10 @@
         ]
       },
       {
+        "tab": "API Reference",
+        "openapi": "https://app.stainless.com/api/spec/documented/telnyx/openapi.documented.yml"
+      },
+      {
         "tab": "Tab 2"
       },
       {
